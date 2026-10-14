@@ -241,7 +241,7 @@ footer{
             <input type="email" id="correo2" placeholder=" " autocomplete="email" required>
             <label for="correo2">Email</label>
           </div>
-          <button class="btn btn-lg" type="submit">Volver ahora
+          <button id="cta-principal" class="btn btn-lg" type="submit">Volver ahora
             <svg width="14" height="22" viewBox="0 0 14 22" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 2l9 9-9 9"/></svg>
           </button>
         </form>
@@ -335,6 +335,17 @@ document.querySelector('.brand').addEventListener('click',function(e){
   document.getElementById('planes').hidden=true;
   document.getElementById('inicio').hidden=false;
 });
+</script>
+  <script>
+  // Envía el evento clic_cta_principal cuando el visitante hace clic en el CTA
+  document.querySelectorAll('#cta-principal, .cta-principal').forEach(function (boton) {
+    boton.addEventListener('click', function () {
+      var seccion = boton.closest('section');
+      gtag('event', 'clic_cta_principal', {
+        ubicacion: seccion && seccion.id ? seccion.id : 'sin_seccion'
+      });
+    });
+  });
 </script>
 </body>
 </html>
